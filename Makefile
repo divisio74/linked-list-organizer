@@ -16,7 +16,7 @@ OBJ     =       $(SRC:.c=.o)
 
 LIB     =       -Lsrc -lshell
 
-NAME    =       my_organize
+NAME    =       organized
 
 all:    $(NAME)
 
