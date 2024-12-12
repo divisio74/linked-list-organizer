@@ -18,27 +18,36 @@ int del(void *data, char **args)
     char *token_pair;
     char *pair;
     int id;
+    int z = 0;
 
     for (i = 0; args[i] != NULL; i++) {
         token_pair = args[i];
         pair = my_strtok(token_pair, ",");
         while (pair != NULL) {
             id = my_atoi(pair);
-            del_print(workshop, id);
+            z_id(z, id);
+            del_print(workshop, id, z);
             pair = my_strtok(NULL, ",");
         }
+        z++;
     }
     return 0;
 }
 
-int del_print(workshop_t *workshop, int id)
+int z_id(int z, int id)
+{
+    if (z > 0)
+        id = id - z;
+}
+
+int del_print(workshop_t *workshop, int id, int z)
 {
     hardware_t *current;
     hardware_t *previous;
 
     if (del_cpf(&current, &previous, workshop, id) == 84)
         return 84;
-    printf("%s n°%d - %s deleted.\n", current->type, current->id,
+    printf("%s n°%d - %s deleted.\n", current->type, current->id + z,
         current->name);
     free(current);
 }

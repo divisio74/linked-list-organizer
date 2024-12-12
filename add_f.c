@@ -46,12 +46,12 @@ int add_token(workshop_t *workshop, char *type, char *name)
 
 int is_valid_type(const char *type)
 {
-    const char *valid_types[] = {
+    const char *list_types[] = {
         "ACTUATOR", "DEVICE", "PROCESSOR", "SENSOR", "WIRE"};
-    const int num_valid_types = 5;
+    const int nb = 5;
 
-    for (int i = 0; i < num_valid_types; i++) {
-        if (my_strcmp(type, valid_types[i]) == 0) {
+    for (int i = 0; i < nb; i++) {
+        if (my_strcmp(type, list_types[i]) == 0) {
             return 1;
         }
     }
