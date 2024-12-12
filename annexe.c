@@ -31,3 +31,61 @@ char *my_strncpy(char *dest, const char *src, size_t n)
     }
     return dest;
 }
+
+int my_atoi(const char *str)
+{
+    int result = 0;
+    int sign = 1;
+    int i = 0;
+
+    while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
+        str[i] == '\v' || str[i] == '\f' || str[i] == '\r') {
+        i++;
+    }
+    if (str[i] == '-' || str[i] == '+') {
+        if (str[i] == '-') {
+            sign = -1;
+        }
+        i++;
+    }
+    while (str[i] >= '0' && str[i] <= '9') {
+        result = result * 10 + (str[i] - '0');
+        i++;
+    }
+    return sign * result;
+}
+
+char *my_strtok(char *str, const char *delim)
+{
+    static char *saved_str = NULL;
+    char *token_start;
+
+    if (str != NULL)
+        saved_str = str;
+    if (saved_str == NULL)
+        return NULL;
+    while (*saved_str && my_strchr(delim, *saved_str))
+        saved_str++;
+    if (*saved_str == '\0')
+        return NULL;
+    token_start = saved_str;
+    while (*saved_str && !my_strchr(delim, *saved_str))
+        saved_str++;
+    if (*saved_str != '\0') {
+        *saved_str = '\0';
+        saved_str++;
+    } else
+        saved_str = NULL;
+    return token_start;
+}
+
+char *my_strchr(const char *str, int c)
+{
+    while (*str != '\0') {
+        if (*str == c) {
+            return (char *)str;
+        }
+        str++;
+    }
+    return NULL;
+}
