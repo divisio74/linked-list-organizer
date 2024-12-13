@@ -30,8 +30,10 @@ void my_putchar(char c);
 void my_putstr(const char *str);
 void my_putnbr(int n);
 void print_info(const char *type, int id, const char *name);
-
-
+int sort(void *data, char **args);
+void swap_f(hardware_t *a, hardware_t *b);
+int get_list_length(workshop_t *workshop);
+int swapped_f(workshop_t *workshop, int length);
 
 
 #endif

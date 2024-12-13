@@ -16,9 +16,8 @@ void my_putchar(char c)
 
 void my_putstr(const char *str)
 {
-    while (*str) {
+    while (*str)
         my_putchar(*str++);
-    }
 }
 
 void my_putnbr(int n)
@@ -27,9 +26,8 @@ void my_putnbr(int n)
         my_putchar('-');
         n = -n;
     }
-    if (n >= 10) {
+    if (n >= 10)
         my_putnbr(n / 10);
-    }
     my_putchar((n % 10) + '0');
 }
 
