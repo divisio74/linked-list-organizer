@@ -8,6 +8,7 @@
 SRC     =       main.c \
                 add_f.c \
                 annexe.c \
+				annexe_2.c \
 				sort_f.c \
 				del_f.c \
 				disp_f.c \

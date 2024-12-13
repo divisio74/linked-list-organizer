@@ -5,7 +5,6 @@
 ** del_f
 */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "src/shell.h"
 #include "struct.h"
@@ -25,7 +24,7 @@ int del(void *data, char **args)
         pair = my_strtok(token_pair, ",");
         while (pair != NULL) {
             id = my_atoi(pair);
-            z_id(z, id);
+            id = z_id(z, id);
             del_print(workshop, id, z);
             pair = my_strtok(NULL, ",");
         }
@@ -38,6 +37,7 @@ int z_id(int z, int id)
 {
     if (z > 0)
         id = id - z;
+        return id;
 }
 
 int del_print(workshop_t *workshop, int id, int z)
@@ -47,8 +47,8 @@ int del_print(workshop_t *workshop, int id, int z)
 
     if (del_cpf(&current, &previous, workshop, id) == 84)
         return 84;
-    printf("%s n°%d - %s deleted.\n", current->type, current->id + z,
-        current->name);
+    print_info(current->type, current->id + z, current->name);
+    my_putstr(" deleted.\n");
     free(current);
 }
 

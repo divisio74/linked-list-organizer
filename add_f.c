@@ -5,7 +5,6 @@
 ** add_f
 */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "src/shell.h"
 #include "struct.h"
@@ -24,12 +23,12 @@ int add(void *data, char **args)
             return 84;
         if (!is_valid_type(type))
             return 84;
-        add_token(workshop, type, name);
+        add_process(workshop, type, name);
     }
     return 0;
 }
 
-int add_token(workshop_t *workshop, char *type, char *name)
+int add_process(workshop_t *workshop, char *type, char *name)
 {
     hardware_t *new_hardware = malloc(sizeof(hardware_t));
 
@@ -39,8 +38,8 @@ int add_token(workshop_t *workshop, char *type, char *name)
     workshop->next_id++;
     new_hardware->next = workshop->head;
     workshop->head = new_hardware;
-    printf("%s n°%d - %s added.\n", new_hardware->type,
-        new_hardware->id, new_hardware->name);
+    print_info(new_hardware->type, new_hardware->id, new_hardware->name);
+    my_putstr(" added.\n");
     return 0;
 }
 

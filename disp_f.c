@@ -5,7 +5,6 @@
 ** disp_f
 */
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "src/shell.h"
 #include "struct.h"
@@ -22,8 +21,8 @@ int disp(void *data, char **args)
     previous = NULL;
     i = workshop->next_id;
     while (current != NULL && (current)->id <= i) {
-        printf("%s n°%d - %s.\n", current->type, current->id,
-            current->name);
+        print_info(current->type, current->id, current->name);
+        my_putstr("\n");
         previous = current;
         current = (current)->next;
     }

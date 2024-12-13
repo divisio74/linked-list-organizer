@@ -5,7 +5,7 @@
 ** organize
 */
 
-#include <stdio.h>
+#include <unistd.h>
 #include "src/shell.h"
 #include "struct.h"
 
@@ -19,13 +19,18 @@ int del_cpf(hardware_t **current, hardware_t **previous,
     workshop_t *workshop, int id);
 int my_strcmp(const char *s1, const char *s2);
 char *my_strncpy(char *dest, const char *src, size_t n);
-int add_token(workshop_t *workshop, char *type, char *name);
+int add_process(workshop_t *workshop, char *type, char *name);
 int my_atoi(const char *str);
 char *my_strtok(char *str, const char *delim);
 char *my_strchr(const char *str, int c);
 void setup_id(workshop_t *workshop, int start_id);
 int del_print(workshop_t *workshop, int id, int z);
 int z_id(int z, int id);
+void my_putchar(char c);
+void my_putstr(const char *str);
+void my_putnbr(int n);
+void print_info(const char *type, int id, const char *name);
+
 
 
 

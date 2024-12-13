@@ -5,8 +5,6 @@
 ** main
 */
 
-#include <stdio.h>
-#include <string.h>
 #include "src/shell.h"
 #include "organize.h"
 
